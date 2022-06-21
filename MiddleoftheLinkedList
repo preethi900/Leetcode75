@@ -1,0 +1,31 @@
+var middleNode = function(head) {
+    let length = 0;
+    let length1 = 0;
+    let node = head;
+    while (node) {
+        length++;
+        node = node.next;
+    }
+    if(length === 1) return head;
+    let mid = Math.floor(length/2);
+    
+    while(head) {
+        length1++;
+        if(mid === length1) {
+            return head.next;
+        }
+        head = head.next;
+        
+    }
+};
+
+
+//Two pointer method
+let slow = head;
+let fast = head;
+
+while(fast & fast.next) {
+  fast = fast.next.next;
+  slow=slow.next;
+ }
+ return slow;
