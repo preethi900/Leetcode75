@@ -1,0 +1,25 @@
+var preorder = function(root) {
+    var arr =[];
+    if(!root) {
+        return arr;
+    }
+    
+    function traverse(node) {
+       if(!node) {
+           return;
+       } 
+        
+       if(node) {
+           arr.push(node.val);
+       }
+       
+        if(node.children) {
+           for(var i =0 ; i < node.children.length ; i++) {
+                traverse(node.children[i]);
+           }
+        }
+    }
+    
+    traverse(root);
+    return arr;
+};
