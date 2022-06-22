@@ -1,0 +1,21 @@
+var postorder = function(root) {
+    var arr = [];
+    if(!root) {
+        return arr;
+    }
+    
+    function traverse(node) {
+        if(!node) {
+            return;
+        }
+        if(node.children) {
+           for(var i =0 ; i < node.children.length ; i++) {
+               traverse(node.children[i]);
+           } 
+        }
+        arr.push(node.val);
+    }
+    
+    traverse(root);
+    return arr;
+};
