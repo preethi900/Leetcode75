@@ -1,0 +1,23 @@
+var levelOrder = function(root) {
+    var arr = [];
+    var level = 0;
+    if(!root) {
+        return arr;
+    }
+    function traverse(node) {
+       if(node) {
+           if(level >= arr.length) {
+               arr[level] = [];
+           }
+           arr[level].push(node.val);
+           level++;
+           traverse(node.left);
+           traverse(node.right);
+           level--;
+       }
+    }
+    
+    traverse(root);
+    
+    return arr;
+};
