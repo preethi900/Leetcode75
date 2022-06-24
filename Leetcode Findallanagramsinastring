@@ -1,0 +1,81 @@
+var findAnagrams = function(s, p) {
+   
+ /* var map = {};
+    let ans =[];
+    let flag;
+    if(s.length < p.length) {
+        return ans;
+    }
+    for(var i = 0 ; i < p.length ; i++) {
+        if(!(p[i] in map)) {
+            map[p[i]] = 1;
+        } else {
+            map[p[i]]++;
+        }
+    }
+    let len = s.length - p.length+1;
+    for(var i =0 ; i < len ; i++) {
+      
+        var str ='';
+        var map1 ={};
+        let len1 = i+p.length;
+        for(var j =i; j < len1; j++) {
+            str += s[j];
+            if(!(s[j] in map1)) {
+                map1[s[j]] =1;
+            } else {
+                map1[s[j]]++;
+            }
+        }
+      
+        flag = false;
+        for(var k= 0 ; k < p.length ; k++) {
+            if(map[p[k]] !== map1[p[k]]) {
+                flag = true;
+                break;
+            }
+        }
+        if(!flag) {
+            ans.push(i);
+        }
+    } 
+    return ans; */
+    
+    //Sliding window approach
+    var map = {};
+    let ans =[];
+  //Frequency Counter of p string
+    for(var i = 0 ; i < p.length ; i++) {
+        if(!(p[i] in map)) {
+            map[p[i]] = 1;
+        } else {
+            map[p[i]]++;
+        }
+    }
+   //Sliding window pointers initialization
+    let left = 0;
+    let right = 0;
+    let count = p.length;
+    
+    while(right < s.length) {
+        if(map[s[right]] > 0) {
+            count--;
+        }
+        
+        map[s[right]]--;
+        right++;
+        if(count === 0) {
+            ans.push(left);
+        }
+      //To keep track of the leftmost character while sliding the window.  
+        if(right -left === p.length) {
+            if(map[s[left]] >= 0) {
+                count++;
+            }
+            map[s[left]]++;
+            left++;
+        }
+    }
+    return ans;
+    
+};
