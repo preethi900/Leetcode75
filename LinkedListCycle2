@@ -1,0 +1,24 @@
+var detectCycle = function(head) {
+    if(!head) {
+        return null;
+    }
+    let slow = head;
+    let fast = head;
+    
+    while(fast && fast.next) {
+        fast = fast.next.next;
+        slow =slow.next;
+        if(fast === slow) {
+           let slow1 = head;
+           while(slow !== slow1) {
+               slow = slow.next;
+               slow1 = slow1.next;
+           }
+            return slow;
+        }
+       
+        
+    }
+    return null;
+    
+};
