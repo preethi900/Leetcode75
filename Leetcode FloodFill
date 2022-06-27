@@ -1,0 +1,39 @@
+var floodFill = function(image, sr, sc, color) {
+    var point = image[sr][sc];
+    
+    if(point === color) {
+        return image;
+    }
+    function tocolor(image,r,c,point) {
+     
+        if(r < 0 || r >= image.length || c < 0 || c >= image[0].length||image[r][c] !== point) {
+            return;
+        } else {
+            image[r][c] = color;
+        }
+      
+        
+        
+       
+            tocolor(image,r-1,c,point);
+        
+    
+            tocolor(image,r,c-1,point);
+        
+    
+            tocolor(image,r+1,c,point);
+        
+            tocolor(image,r,c+1,point);
+            return image;
+       
+    }
+    
+   
+    
+    
+  return tocolor(image,sr,sc,point);
+    
+    
+   
+   
+};
