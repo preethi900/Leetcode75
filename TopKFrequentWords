@@ -1,0 +1,19 @@
+var topKFrequent = function(words, k) {
+   var map = {};
+    
+    for(var i = 0 ; i < words.length ; i++) {
+        if(!(words[i] in map)) {
+            map[words[i]]  = 1;
+        } else {
+            map[words[i]] ++;
+        }
+    }
+    
+    let arr = Object.keys(map).sort();
+    
+    let arr1 = Object.values(arr).sort((a,b)=>map[b]-map[a]);
+    
+    
+    
+    return arr1.splice(0,k);
+};
