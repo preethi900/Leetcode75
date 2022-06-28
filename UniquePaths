@@ -1,0 +1,15 @@
+var uniquePaths = function(m, n) {
+    
+    let ans = [];
+    for(var i = 1 ; i<= m ; i++) {
+        for(var j = 1 ; j <=n ;j++) {
+            if(i===1||j===1) {
+                ans[j] = 1;
+            } else {
+                ans[j] += ans[j-1];
+                console.log(ans);
+            }
+        }
+    }
+    return ans[n];
+};
