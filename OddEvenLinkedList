@@ -1,0 +1,58 @@
+var oddEvenList = function(head) {
+ /*   var List1 = new ListNode();
+    var List2 = new ListNode();
+    var odd = List1;
+    var even = List2;
+    var length = 0;
+    while(head) {
+        length++;
+        if(length % 2 !== 0) {
+            odd.next = new ListNode(head.val);
+            odd= odd.next;
+        } else {
+            even.next = new ListNode(head.val);
+            even= even.next;
+        }
+        
+        head = head.next;
+    }
+    
+    odd=List1.next;
+    even=List2.next;
+    
+   var List3 = new ListNode();
+    var ans = List3;
+    
+    while(odd || even) {
+        if(odd) {
+            
+            ans.next = new ListNode(odd.val);
+            ans = ans.next;
+            odd = odd.next;
+        } else {
+           
+            ans.next = even;
+            break;
+        }
+    }
+    
+    return List3.next; */
+    
+     if (!head)  {
+        return null;
+    }
+    let odd = head;
+    let even = head.next;
+    while (odd.next && odd.next.next) {
+       let tmp = odd.next;
+      
+        odd.next = odd.next.next;
+        odd = odd.next;
+    
+        tmp.next = odd.next;
+     
+    }
+    odd.next = even;
+    return head;
+    
+};
