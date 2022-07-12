@@ -1,0 +1,25 @@
+var spiralOrder = function(matrix) {
+    let res = [];
+    while(matrix.length > 0) {
+     
+        res.push(...matrix.shift());
+    
+     
+        for(var i =0 ; i < matrix.length ; i++) {
+            let val = matrix[i].pop();
+            if(val) {
+                res.push(val);
+                matrix[i].reverse();
+            }
+           
+        }
+       
+       
+        matrix.reverse();
+       
+       
+    }
+    
+    return res;
+   
+};
