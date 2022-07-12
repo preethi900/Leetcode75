@@ -1,0 +1,54 @@
+var invertTree = function(root) {
+/*  if(!root) {
+      return null;
+  }
+    function traverse(node) {
+        if(!node) {
+            return;
+        }
+        if(node.left || node.right) {
+            let tmp = node.left;
+            node.left = node.right;
+            node.right = tmp;
+        }
+        traverse(node.left);
+        traverse(node.right);
+        return node;
+    }
+    
+    
+    
+    
+    return traverse(root); */
+    
+/*//DFS method    
+    var stack = [root];
+   while(stack.length) {
+      let n = stack.pop();
+       console.log(n);
+       if(n) {
+           [n.left,n.right] = [n.right,n.left];
+           stack.push(n.left,n.right);
+           
+   
+       }
+    
+   }
+    
+  return root; */
+ //BFS Method   
+     var queue = [root];
+   while(queue.length) {
+      let n = queue.shift();
+       console.log(n);
+       if(n) {
+           [n.left,n.right] = [n.right,n.left];
+           queue.push(n.left,n.right);
+           
+   
+       }
+    
+   }
+    
+  return root;
+};
