@@ -1,0 +1,16 @@
+var kthSmallest = function(root, k,min) {
+    var arr = [];
+    function traverse(node,k) {
+        if(!node) {
+            return;
+        }
+      
+        traverse(node.left,k);
+        arr.push(node.val);
+        traverse(node.right,k);
+
+    }
+    
+    traverse(root,k);
+    return arr[k-1];
+};
