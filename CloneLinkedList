@@ -1,0 +1,25 @@
+var copyRandomList = function(head) {
+    if(!head) {
+        return null;
+    }
+    var n = head;
+    var map = new Map();
+    
+    while(n) {
+        map.set(n,new Node(n.val));
+        n = n.next;
+    }
+   
+   
+  
+   n = head;
+    while(n) {
+        
+      map.get(n).next = map.get(n.next) || null;
+      map.get(n).random = map.get(n.random) || null;
+      n= n.next;
+    }
+    
+    return map.get(head);
+    
+};
