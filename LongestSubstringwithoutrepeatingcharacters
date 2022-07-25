@@ -1,0 +1,24 @@
+var lengthOfLongestSubstring = function(s) {
+   
+  let j = 0;
+    let max = 0;
+    var map = {};
+    let str = '';
+    
+    
+    while(j < s.length) {
+        for(var i = j ; i < s.length ; i++) {
+            if(!(s[i] in map)) {
+                map[s[i]] = 1;
+                str += s[i];
+                max = Math.max(max,str.length);
+            } else {
+                map = {};
+                str = '';
+                break;
+            }
+        }
+        j++;
+    }
+    return max;
+};
