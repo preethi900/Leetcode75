@@ -1,0 +1,27 @@
+
+var MyCalendar = function() {
+    this.calendar = [];
+};
+
+/** 
+ * @param {number} start 
+ * @param {number} end
+ * @return {boolean}
+ */
+MyCalendar.prototype.book = function(start, end) {
+    this.calendar.push([start,end]);
+    let sorted = this.calendar.slice().sort((a,b) => (a[0] === b[0]) ? a[1] - b[1] : a[0] - b[0]);
+    for(var i = 1; i < sorted.length ; i++) {
+        if(sorted[i-1][1] > sorted[i][0]) {
+            this.calendar.pop();
+            return false;
+        }
+    }
+    return true;
+};
+
+/** 
+ * Your MyCalendar object will be instantiated and called as such:
+ * var obj = new MyCalendar()
+ * var param_1 = obj.book(start,end)
+ */
