@@ -1,0 +1,22 @@
+ //O(n) Time and O(1) space   //Floyd Algorithm
+    var slow = nums[0];
+    var fast = nums[0];
+    
+    let flag = true;
+    
+    while(slow !== fast || flag) {
+        flag = false;
+        slow = nums[slow];
+        fast= nums[fast];
+        fast= nums[fast];
+       
+    }
+    slow = nums[0];
+    
+    while(slow !== fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
+    
+    return slow;
+};
