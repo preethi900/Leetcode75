@@ -1,0 +1,20 @@
+var coinChange = function(coins, amount) {
+    var arr = new Array(amount+1).fill(amount+1);
+    arr[0] = 0;
+    for(var j=1 ; j < amount+1 ; j++) {
+       
+        for(var i = 0 ; i < coins.length ; i++) {
+            let rem = j - coins[i];
+            if(coins[i] <= j) {
+                arr[j] = Math.min(arr[j],arr[rem]+1);
+            }
+           
+        }
+       
+    }
+    let val =arr.pop();
+    if(val === amount+1) {
+        return -1;
+    }
+    return val;
+};
