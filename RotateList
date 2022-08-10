@@ -1,0 +1,28 @@
+var rotateRight = function(head, k) {
+    if(!head || !head.next) {
+        return head;
+    }
+     var duphead = head;
+    var length = 0;
+     while (duphead) {
+         length++;
+         duphead = duphead.next;
+     }
+    k %= length;
+   
+    while( k > 0) {
+         duphead = head;
+        while(head.next.next !== null) {
+            var temp = head.next;
+            head = head.next;
+        }
+        temp = head.next;
+        head.next = null;
+        temp.next = duphead;
+        
+        head = temp;
+        
+        k--;
+    }
+    return head;
+};
