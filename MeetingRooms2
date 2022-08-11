@@ -1,0 +1,16 @@
+var minMeetingRooms = function(intervals) {
+   
+    var rooms = 0;
+    var j = 0;
+    var start = intervals.map(a=>a[0]).sort((a,b) => a-b);
+    var end = intervals.map(a=>a[1]).sort((a,b) => a-b);
+    
+    for(var i=0; i < intervals.length ; i++) {
+        if(start[i] < end[j]) {
+            rooms++;
+        } else {
+            j++;
+        }
+    }
+    return rooms;
+};
