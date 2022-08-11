@@ -1,0 +1,31 @@
+var Logger = function() {
+   this.logger = [];
+    this.map = {};
+};
+
+/** 
+ * @param {number} timestamp 
+ * @param {string} message
+ * @return {boolean}
+ */
+Logger.prototype.shouldPrintMessage = function(timestamp, message) {
+   
+    
+    if(!(message in this.map)) {
+        this.map[message] = timestamp;
+        return true;
+    } else {
+        if(timestamp - this.map[message] >= 10) {
+            this.map[message] = timestamp;
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
+
+/** 
+ * Your Logger object will be instantiated and called as such:
+ * var obj = new Logger()
+ * var param_1 = obj.shouldPrintMessage(timestamp,message)
+ */
