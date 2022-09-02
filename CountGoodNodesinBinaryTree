@@ -1,0 +1,25 @@
+var goodNodes = function(root) {
+    var val = -Infinity;
+    var count = 0;
+   
+   function traverse(node,val) {
+       if(!node) {
+           return;
+       }
+       if(node.val >= val) {
+           val = node.val; 
+           count++;
+       }
+       traverse(node.left,val);
+       traverse(node.right,val);
+       
+   } 
+    
+    
+    
+    
+    
+    
+    traverse(root,val);
+    return count;
+};
