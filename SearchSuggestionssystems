@@ -1,0 +1,76 @@
+var suggestedProducts = function(products, searchWord) {
+ /*   products.sort();
+    var arr = [];
+    var str = '';
+    var start;
+    for(var i = 0 ; i < searchWord.length ; i++) {
+        str += searchWord[i];
+        start = binarySearch(str);
+        arr.push(...start);
+       
+    }
+    return arr;
+    
+    
+    function binarySearch(word) {
+        var arr1 = [];
+        var prefixl = word.length;
+        var i = 0 ;
+        var j = products.length-1;
+        
+        while( i <= j){
+            var mid= Math.floor((i+j)/2);
+            
+            var lp = products[i].substring(0,prefixl);
+           
+            var rp = products[j].substring(0,prefixl);
+            
+            var mp = products[mid].substring(0,prefixl);
+           
+            
+            if(lp === rp && lp === word && rp === word ) {
+                    
+                    let temp = products.slice(i,j+1);
+
+                   if(temp.length > 3) {
+                        arr1.push(temp.slice(i,i+3));
+                        return arr1;
+                    } else { 
+                        arr1.push(temp);
+                        return arr1;
+                    }
+            } 
+            
+            if(mp !== word) {
+                    if(word.localeCompare(mp) === 1) {
+                        i = mid+1;
+                    } else {
+                        j = mid;
+                    }
+            } else {
+                    j = mid;
+            } 
+            
+           
+        
+      }
+        arr1.push([]);
+        return arr1;
+    } */
+    
+    var arr= [];
+    products.sort();
+    var str ='';
+    for(var i = 0 ; i < searchWord.length ; i++) {
+        str += searchWord[i];
+        
+        var temp = products.filter(p => p.substring(0,i+1) === str);
+        if(temp.length > 3) {
+            arr.push(temp.slice(0,3));
+        } else {
+            arr.push(temp);
+        }
+    }
+    return arr;
+    
+};
