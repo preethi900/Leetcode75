@@ -1,0 +1,23 @@
+var countAndSay = function(n) {
+var arr= ['1'];
+    for(var i = 1 ; i < n ; i++) {
+        let str = arr[i-1];
+        
+        
+        var str1 = '';
+        var count =1;
+        for(var k= 0 ; k < str.length ; k++) {
+           
+           if(str[k] === str[k+1]) {
+               count++;
+           } else {
+                str1 += count+str[k];
+                count =1;
+           }
+           
+        }
+        arr[i] = str1;
+       
+    }
+    return arr[n-1];
+};
