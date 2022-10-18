@@ -1,0 +1,30 @@
+var maxNumberOfFamilies = function(n, reservedSeats) {
+    var max = 0;
+    var count = 0;
+   var map = {};
+
+    for(let seat of reservedSeats) {
+        if(!(map[seat[0]])) {
+            map[seat[0]] = [];
+        }
+        map[seat[0]][seat[1]] = true;
+    }
+    console.log(map);
+
+    for(let key in map) {
+        if((!map[key][2] && !map[key][3] && !map[key][4] && !map[key][5]) && (!map[key][6] && !map[key][7] && !map[key][8] && !map[key][9]) ) {
+            max++;
+            max++;
+        } else if(!map[key][2] && !map[key][3] && !map[key][4] && !map[key][5]) {
+            max++;
+        } else if (!map[key][6] && !map[key][7] && !map[key][8] && !map[key][9]) {
+            max++;
+        } else if(!map[key][4] && !map[key][5] && !map[key][6] && !map[key][7]){
+            max++;
+        }
+        count++;
+    }
+    max += (n-count)*2;
+    return max; 
+    
+};
