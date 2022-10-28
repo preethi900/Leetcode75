@@ -1,0 +1,54 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} left
+ * @param {number} right
+ * @return {ListNode}
+ */
+var reverseBetween = function(head, left, right) {
+         if (head == null) {
+            return null;
+        }
+
+        // Move the two pointers until they reach the proper starting point
+        // in the list.
+        var cur = head, prev = null;
+        while (left > 1) {
+            prev = cur;
+            cur = cur.next;
+            left--;
+            right--;
+        }
+
+        // The two pointers that will fix the final connections.
+       var con = prev, tail = cur;
+
+        // Iteratively reverse the nodes until n becomes 0.
+       var third = null;
+        while (right > 0) {
+            third = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = third;
+            right--;
+        }
+
+        // Adjust the final connections as explained in the algorithm
+        if (con != null) {
+            con.next = prev;
+        } else {
+            head = prev;
+        }
+
+        tail.next = cur;
+        return head;
+    
+
+
+};
