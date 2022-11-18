@@ -1,0 +1,33 @@
+var checkInclusion = function(s1, s2) {
+    if(s1.length > s2.length) {
+        return false;
+    }
+
+    var arr = new Array(26).fill(0);
+
+    for(var i=0 ;i < s1.length ; i++) {
+        arr[s1.charCodeAt(i) - 'a'.charCodeAt(0)] ++;
+        arr[s2.charCodeAt(i) - 'a'.charCodeAt(0)]--;
+    }
+
+    if(allCount(arr)) {
+        return true;
+    }
+
+    for(var j = s1.length ; j < s2.length ; j++) {
+        arr[s2.charCodeAt(j) - 'a'.charCodeAt(0)] --;
+        arr[s2.charCodeAt(j-s1.length) - 'a'.charCodeAt(0)]++;
+        if(allCount(arr)) {
+            return true;
+        } 
+    }
+    return false;
+    function allCount(arr) {
+        for(var i=0 ; i < arr.length ; i++) {
+            if(arr[i] !== 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+};
