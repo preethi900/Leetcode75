@@ -1,0 +1,21 @@
+var sumSubarrayMins = function(arr) {
+    var sum = 0;
+
+    var min = 0;
+    for(var i =0 ; i < arr.length ; i++) {
+        
+       min = arr[i];
+        for(var j = i ; j < arr.length ; j++) {
+                if(arr[j] < min) {
+                    min = arr[j];
+                    sum += min;
+                } else {
+                    sum += min;
+                }
+                
+        }
+     
+        
+    }
+    return sum%(Math.pow(10,9) + 7);
+};
