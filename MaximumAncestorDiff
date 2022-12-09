@@ -1,0 +1,28 @@
+var maxAncestorDiff = function(root) {
+    if(!root) {
+        return 0;
+    }
+    var res = 0;
+    function traverse(node,min,max) {
+        if(!node)  {
+            res= Math.max(res,max-min);
+            return;
+        }
+
+        max= Math.max(max,node.val);
+        min = Math.min(min,node.val);
+
+        traverse(node.left,min,max);
+        traverse(node.right,min,max);
+
+    }
+
+
+
+
+
+
+
+    traverse(root,root.val,root.val);
+    return res;
+};
