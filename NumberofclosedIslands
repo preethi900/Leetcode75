@@ -1,0 +1,42 @@
+var closedIsland = function(grid) {
+    var count = 0;
+    function closed(x,y) {
+        if(x < 0 || x >= grid.length || y < 0 || y >= grid[0].length) {
+            return;
+        }
+
+        if(grid[x][y] === 1) {
+            return true;
+        }
+        grid[x][y] = 1;
+
+        var top = closed(x-1,y);
+        var bottom = closed(x+1,y);
+        var left = closed(x,y-1);
+        var right = closed(x,y+1);
+        if(top && bottom && left && right) {
+            return true;
+        } else {
+            grid[x][y] = 0;
+            return false;
+        }
+
+    }
+
+
+
+
+
+
+
+    for(var i = 1 ; i < grid.length -1 ; i++) {
+        for(var j =1 ; j < grid[0].length-1 ; j++) {
+            if(grid[i][j] === 0) {
+                if(closed(i,j)) {
+                    count++;
+                }
+            }
+        }
+    }
+    return count;
+};
