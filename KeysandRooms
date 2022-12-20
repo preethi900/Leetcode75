@@ -1,0 +1,55 @@
+/**
+ * @param {number[][]} rooms
+ * @return {boolean}
+ */
+var canVisitAllRooms = function(rooms) {
+  /*  var res= [0];
+    var keys = [...rooms[0]];
+    console.log(keys);
+    var len = rooms.length;
+    for(var i = 1 ; i < rooms.length ; i++) {
+        if(rooms[i].length === 0) {
+            res.push(i);
+            continue;
+        }
+        
+        if(keys.includes(i)) {
+            res.push(i);
+       
+        }
+         keys.push(...rooms[i]);
+    }
+    return res.length === rooms.length; */
+
+    var graph = {};
+
+    for(var i= 0 ; i < rooms.length ; i++) {
+        if(!(i in graph)) {
+            graph[i] = [];
+        }
+        graph[i].push(...rooms[i]);
+    }
+    console.log(graph);
+    function dfs(g,current,path,visited) {
+       
+        for(let node of graph[current]) {
+            if((visited.has(node))) {
+                continue;
+            }
+            path = dfs(g,node,[...path, node],visited.add(node));
+        }
+        return path;
+    }
+    
+
+ 
+    var visited= new Set();
+  
+    visited.add(0);
+    if(Object.keys(graph).length === dfs(graph,0,[0],visited).length) {
+        return true;
+    } 
+
+    return false;
+
+};
