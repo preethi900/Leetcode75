@@ -1,0 +1,30 @@
+var canArrange = function(arr, k) {
+  
+   var map = {};
+
+   for(let n of arr) {
+       var mod = n % k;
+       if(mod < 0) {
+           mod += k;
+       }
+       var target = 0;
+       if( mod > 0) {
+           target = k-mod;      
+       }
+
+       if(map[target] === undefined ||map[target] === 0) {
+           map[mod] = ++map[mod] || 1;
+       } else {
+           map[target]--;
+       }
+    
+   }
+
+    for(let key in map) {
+        if(map[key] > 0) return false;
+    }
+    
+    return true;
+
+   
+};
