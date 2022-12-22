@@ -1,0 +1,23 @@
+var numberOfWays = function(s) {
+    var res = 0;
+    var ones = s.replaceAll('0','').length;
+    var zeros = s.length -ones;
+    var countOnes = 0;
+    var countZeros = 0;
+
+    for(var i= 0 ; i < s.length ; i++) {
+        if(s[i] === '0') {
+            res += countOnes*(ones-countOnes);
+
+        } else {
+            res += countZeros*(zeros-countZeros);
+        }
+
+        if(s[i] === '0') {
+            countZeros++;
+        } else {
+            countOnes++;
+        }
+    }
+    return res;
+};
